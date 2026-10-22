@@ -1,627 +1,509 @@
-
-:root {
-  --warriors-blue: #17408b;
-  --warriors-gold: #ffc72c;
-  --ink: #17233b;
-  --muted: #718096;
-  --border: #e6eaf1;
-  --surface: #ffffff;
-  --page: #ffffff;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  background: var(--page);
-  color: var(--ink);
-  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-}
-
-button,
-input {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-.warriors-app {
-  min-height: 100vh;
-  background: white;
-}
-
-.hero {
-  background: var(--warriors-blue);
-  color: white;
-}
-
-.hero-inner {
-  max-width: 1240px;
-  margin: auto;
-  padding: 28px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.hero-brand {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-
-.brand-mark {
-  width: 66px;
-  height: 66px;
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  border: 3px solid var(--warriors-gold);
-  border-radius: 50%;
-  color: var(--warriors-gold);
-  font-weight: 900;
-  font-size: 20px;
-}
-
-.hero-kicker,
-.eyebrow {
-  color: #bd941d;
-  font-size: 11px;
-  letter-spacing: 1.6px;
-  font-weight: 800;
-}
-
-.hero-kicker {
-  color: var(--warriors-gold);
-  margin: 0 0 5px;
-}
-
-.hero h1 {
-  margin: 0;
-  font-size: clamp(26px, 4vw, 40px);
-  letter-spacing: -1px;
-}
-
-.hero-subtitle {
-  color: #dce6fa;
-  margin: 8px 0 0;
-  font-size: 14px;
-}
-
-.hero-stripe {
-  height: 5px;
-  background: var(--warriors-gold);
-}
-
-.refresh-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 11px 15px;
-  color: var(--warriors-blue);
-  background: white;
-  border: 0;
-  border-radius: 8px;
-  font-weight: 750;
-}
-
-.refresh-button:disabled {
-  opacity: 0.65;
-  cursor: wait;
-}
-
-.spin {
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-.dashboard-content {
-  max-width: 1240px;
-  margin: auto;
-  padding: 20px 24px 36px;
-}
-
-.status-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 18px;
-  font-size: 12px;
-  color: var(--muted);
-}
-
-.status-indicator {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #526176;
-}
-
-.status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #e0a22b;
-}
-
-.live-dot {
-  background: #16a36a;
-}
-
-.notice {
-  padding: 12px 14px;
-  margin-bottom: 15px;
-  border: 1px solid #f0d38b;
-  border-radius: 8px;
-  background: #fffaf0;
-  color: #805b00;
-  font-size: 13px;
-}
-
-.tabs {
-  display: flex;
-  gap: 7px;
-  overflow-x: auto;
-  padding-bottom: 5px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid var(--border);
-}
-
-.tab {
-  white-space: nowrap;
-  padding: 12px 17px;
-  border: 0;
-  border-bottom: 3px solid transparent;
-  background: transparent;
-  color: #63718a;
-  font-weight: 700;
-}
-
-.tab:hover,
-.active-tab {
-  color: var(--warriors-blue);
-}
-
-.active-tab {
-  border-bottom-color: var(--warriors-gold);
-}
-
-.summary-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 15px;
-  margin-bottom: 22px;
-}
-
-.stat-card,
-.panel {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 13px;
-  box-shadow: 0 3px 14px rgb(20 48 90 / 4%);
-}
-
-.stat-card {
-  padding: 19px;
-  min-width: 0;
-}
-
-.stat-card-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 650;
-}
-
-.stat-card-value {
-  margin: 16px 0 7px;
-  font-size: 32px;
-  line-height: 1;
-  color: var(--warriors-blue);
-  font-weight: 850;
-  letter-spacing: -1px;
-}
-
-.stat-card-sub {
-  color: var(--muted);
-  font-size: 11px;
-  overflow-wrap: anywhere;
-}
-
-.panel {
-  padding: 24px;
-  margin-bottom: 22px;
-  min-width: 0;
-}
-
-.section-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 22px;
-}
-
-.section-heading h2,
-.panel > h2 {
-  margin: 6px 0 0;
-  font-size: 22px;
-  letter-spacing: -0.5px;
-}
-
-.chart-key {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.chart-key i {
-  width: 9px;
-  height: 9px;
-  border-radius: 2px;
-}
-
-.gold-key { background: var(--warriors-gold); }
-.blue-key { background: var(--warriors-blue); }
-
-.chart-container {
-  width: 100%;
-  height: 310px;
-}
-
-.chart-note,
-.muted {
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.6;
-}
-
-.leaders-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.leader-card {
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 7px;
-  padding: 16px;
-  border: 1px solid var(--border);
-  background: white;
-  border-radius: 10px;
-  transition: border-color 0.2s, transform 0.2s;
-}
-
-.leader-card:hover,
-.scenario-card:hover {
-  border-color: var(--warriors-gold);
-  transform: translateY(-2px);
-}
-
-.leader-card > span:first-child {
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.leader-card strong {
-  color: var(--warriors-blue);
-  font-size: 26px;
-}
-
-.leader-name {
-  font-weight: 700;
-  font-size: 13px;
-}
-
-.leader-card small {
-  color: var(--muted);
-}
-
-.player-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 22px;
-}
-
-.player-tab {
-  padding: 9px 12px;
-  border: 1px solid var(--border);
-  border-radius: 7px;
-  color: #43516a;
-  background: white;
-  font-size: 12px;
-  font-weight: 650;
-}
-
-.player-tab:hover,
-.selected-player-tab {
-  background: var(--warriors-blue);
-  border-color: var(--warriors-blue);
-  color: white;
-}
-
-.player-profile {
-  margin: 0;
-  box-shadow: none;
-  background: #fbfcff;
-}
-
-.player-identity {
-  display: flex;
-  align-items: center;
-  gap: 17px;
-  margin-bottom: 22px;
-}
-
-.player-number {
-  width: 68px;
-  height: 68px;
-  display: grid;
-  place-items: center;
-  border-radius: 12px;
-  color: var(--warriors-blue);
-  background: #fff2c5;
-  font-size: 28px;
-  font-weight: 900;
-}
-
-.player-identity h2 {
-  margin: 4px 0;
-  font-size: 24px;
-}
-
-.player-identity p {
-  margin: 5px 0 0;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.player-stat-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.player-stat {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 9px;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.player-stat span {
-  color: var(--muted);
-  font-size: 11px;
-  font-weight: 700;
-}
-
-.player-stat strong {
-  color: var(--warriors-blue);
-  font-size: 24px;
-}
-
-.table-wrap {
-  width: 100%;
-  overflow-x: auto;
-  margin-top: 18px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  white-space: nowrap;
-  font-size: 13px;
-}
-
-th {
-  background: #f3f6fb;
-  color: #586780;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-th,
-td {
-  padding: 13px 14px;
-  text-align: left;
-  border-bottom: 1px solid var(--border);
-}
-
-tbody tr:hover {
-  background: #fafcff;
-}
-
-.subheading {
-  margin-top: 30px;
-  font-size: 17px;
-}
-
-.projection-control {
-  margin: 28px 0;
-  padding: 20px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-}
-
-.projection-control label {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  font-weight: 650;
-  font-size: 14px;
-}
-
-.projection-control label strong {
-  color: var(--warriors-blue);
-  font-size: 24px;
-}
-
-.projection-control input {
-  width: 100%;
-  accent-color: var(--warriors-blue);
-  margin: 22px 0 10px;
-}
-
-.range-labels {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  color: var(--muted);
-  font-size: 11px;
-}
-
-.projection-result {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 9px;
-  padding: 28px 15px;
-  border-radius: 12px;
-  background: var(--warriors-blue);
-  color: white;
-  text-align: center;
-}
-
-.projection-result > span:first-child {
-  color: #dce6fa;
-  font-size: 13px;
-}
-
-.projection-result strong {
-  color: var(--warriors-gold);
-  font-size: 42px;
-  letter-spacing: -1px;
-}
-
-.projection-result > span:last-child {
-  font-size: 12px;
-  color: #dce6fa;
-}
-
-.scenario-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  margin: 20px 0;
-}
-
-.scenario-card {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: flex-start;
-  padding: 17px;
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 9px;
-  transition: border-color 0.2s, transform 0.2s;
-}
-
-.scenario-card span {
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.scenario-card strong {
-  color: var(--warriors-blue);
-  font-size: 23px;
-}
-
-.scenario-card small {
-  color: var(--muted);
-}
-
-.dashboard-footer {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-  padding: 22px 0;
-  border-top: 1px solid var(--border);
-  color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 0.7px;
-}
-
-@media (max-width: 850px) {
-  .summary-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .leaders-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .hero-inner {
-    align-items: flex-start;
-  }
-}
-
-@media (max-width: 520px) {
-  .hero-inner {
-    flex-direction: column;
-    padding: 22px 17px;
-  }
-
-  .dashboard-content {
-    padding: 17px 13px 25px;
-  }
-
-  .summary-grid {
-    gap: 9px;
-  }
-
-  .stat-card {
-    padding: 14px;
-  }
-
-  .stat-card-value {
-    font-size: 27px;
-  }
-
-  .panel {
-    padding: 16px;
-  }
-
-  .leaders-grid,
-  .player-stat-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .scenario-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .section-heading {
-    align-items: flex-start;
-  }
-
-  .chart-key {
-    flex-wrap: wrap;
-  }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golden State Warriors - 2026-2027 Roster & Live Stats Hub</title>
+  <style>
+    /* Global Reset & Base Styling */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    }
+    
+    :root {
+      --gsw-blue: #1D428A;
+      --gsw-gold: #FFC72C;
+      --gsw-gold-hover: #e0ac1b;
+      --bg-white: #FFFFFF;
+      --card-bg: #F8F9FA;
+      --border-color: #E2E8F0;
+      --text-dark: #1E293B;
+      --text-muted: #64748B;
+    }
+
+    body {
+      background-color: var(--bg-white);
+      color: var(--text-dark);
+      padding: 0;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Navigation / Header */
+    header {
+      background-color: var(--gsw-blue);
+      color: #FFFFFF;
+      padding: 1.5rem 2rem;
+      border-bottom: 5px solid var(--gsw-gold);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .header-title h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .header-title p {
+      color: var(--gsw-gold);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .record-badge {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--gsw-gold);
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      text-align: right;
+    }
+
+    .record-badge .stat {
+      color: var(--gsw-gold);
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Section Cards */
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      color: var(--gsw-blue);
+      border-left: 4px solid var(--gsw-gold);
+      padding-left: 0.75rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Leaders Grid */
+    .leaders-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .leader-card {
+      background: var(--bg-white);
+      border: 2px solid var(--gsw-gold);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .leader-tag {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gsw-gold);
+      color: var(--gsw-blue);
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 12px;
+    }
+
+    .leader-card h4 {
+      color: var(--gsw-blue);
+      margin-top: 0.5rem;
+    }
+
+    .leader-card .value {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--text-dark);
+    }
+
+    .leader-card .player {
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* Tabs Styling */
+    .tabs-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .tab-btn {
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      color: var(--gsw-blue);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      background: var(--gsw-gold);
+      color: var(--gsw-blue);
+    }
+
+    .tab-btn.active {
+      background: var(--gsw-blue);
+      color: #FFFFFF;
+      border-color: var(--gsw-blue);
+    }
+
+    /* Player Profile Content */
+    .player-card {
+      display: none;
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      grid-template-columns: 100px 1fr;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .player-card.active {
+      display: grid;
+    }
+
+    .player-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--gsw-blue);
+      color: var(--gsw-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      font-weight: 800;
+      border: 3px solid var(--gsw-gold);
+    }
+
+    .player-info h3 {
+      color: var(--gsw-blue);
+      font-size: 1.5rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .player-info .sub-details {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .player-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 1rem;
+      text-align: center;
+      background: var(--card-bg);
+      padding: 0.8rem;
+      border-radius: 6px;
+    }
+
+    .p-stat-title {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    .p-stat-val {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--gsw-blue);
+    }
+
+    /* SVG Chart */
+    .chart-container {
+      width: 100%;
+      height: 250px;
+      position: relative;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .grid-line {
+      stroke: #E2E8F0;
+      stroke-dasharray: 4;
+    }
+
+    .chart-line-wins {
+      fill: none;
+      stroke: var(--gsw-blue);
+      stroke-width: 3;
+    }
+
+    .chart-line-losses {
+      fill: none;
+      stroke: #EF4444;
+      stroke-width: 3;
+    }
+
+    .legend {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .legend-color {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+    }
+
+    /* Record Projection Section */
+    .projection-box {
+      background: var(--bg-white);
+      border-left: 4px solid var(--gsw-gold);
+      padding: 1rem;
+      border-radius: 4px;
+    }
+
+    .projection-header {
+      font-weight: 700;
+      color: var(--gsw-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 600px) {
+      .player-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .player-avatar {
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-title">
+      <h1>Golden State Warriors</h1>
+      <p>2026-2027 Season Roster & Live Analytics Tracker</p>
+    </div>
+    <div class="record-badge">
+      <div>Current Record</div>
+      <div class="stat">0 - 1</div>
+      <div style="font-size: 0.75rem; color: #CBD5E1;">Western Conference</div>
+    </div>
+  </header>
+
+  <div class="container">
+    
+    <!-- Stat Leaders Highlighting -->
+    <div class="section-card">
+      <div class="section-title">
+        <span>Stat Leaders</span>
+      </div>
+      <div class="leaders-grid">
+        <div class="leader-card">
+          <div class="leader-tag">Points Leader</div>
+          <h4 id="pts-leader-name">Stephen Curry</h4>
+          <div class="value" id="pts-leader-val">26.6 PPG</div>
+          <div class="player">Point Guard</div>
+        </div>
+        <div class="leader-card">
+          <div class="leader-tag">Rebounds Leader</div>
+          <h4 id="reb-leader-name">Jimmy Butler</h4>
+          <div class="value" id="reb-leader-val">5.6 RPG</div>
+          <div class="player">Forward</div>
+        </div>
+        <div class="leader-card">
+          <div class="leader-tag">Assists Leader</div>
+          <h4 id="ast-leader-name">Jimmy Butler</h4>
+          <div class="value" id="ast-leader-val">4.9 APG</div>
+          <div class="player">Forward</div>
+        </div>
+        <div class="leader-card">
+          <div class="leader-tag">Blocks Leader</div>
+          <h4 id="blk-leader-name">Kristaps Porziņģis</h4>
+          <div class="value" id="blk-leader-val">1.2 BPG</div>
+          <div class="player">Center</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Player Tabs -->
+    <div class="section-card">
+      <div class="section-title">Roster Directory & Individual Stats</div>
+      <div class="tabs-nav" id="tabsNav">
+        <!-- Interactive buttons generated dynamically -->
+      </div>
+      <div id="tabContents">
+        <!-- Dynamic Player Cards rendered here -->
+      </div>
+    </div>
+
+    <!-- Wins & Losses Trend Graph -->
+    <div class="section-card">
+      <div class="section-title">
+        <span>Wins & Losses Trajectory</span>
+        <div class="legend">
+          <div class="legend-item">
+            <div class="legend-color" style="background: var(--gsw-blue);"></div> Wins
+          </div>
+          <div class="legend-item">
+            <div class="legend-color" style="background: #EF4444;"></div> Losses
+          </div>
+        </div>
+      </div>
+      <div class="chart-container">
+        <svg viewBox="0 0 500 200" preserveAspectRatio="none">
+          <!-- Horizontal Gridlines -->
+          <line x1="0" y1="40" x2="500" y2="40" class="grid-line"/>
+          <line x1="0" y1="80" x2="500" y2="80" class="grid-line"/>
+          <line x1="0" y1="120" x2="500" y2="120" class="grid-line"/>
+          <line x1="0" y1="160" x2="500" y2="160" class="grid-line"/>
+
+          <!-- Win Line (Blue) -->
+          <polyline class="chart-line-wins" points="10,190 100,185 200,140 300,100 400,60 490,40" />
+          
+          <!-- Loss Line (Red) -->
+          <polyline class="chart-line-losses" points="10,190 100,170 200,160 300,130 400,110 490,100" />
+
+          <!-- Points / Markers -->
+          <circle cx="10" cy="190" r="4" fill="var(--gsw-blue)" />
+          <circle cx="10" cy="190" r="4" fill="#EF4444" />
+          <circle cx="490" cy="40" r="4" fill="var(--gsw-blue)" />
+          <circle cx="490" cy="100" r="4" fill="#EF4444" />
+        </svg>
+      </div>
+      <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">
+        <span>Oct (Start)</span>
+        <span>Nov</span>
+        <span>Dec</span>
+        <span>Jan</span>
+        <span>Feb</span>
+        <span>Apr (Projected)</span>
+      </div>
+    </div>
+
+    <!-- Record Projections -->
+    <div class="section-card">
+      <div class="section-title">2026-2027 Season Projection</div>
+      <div class="projection-box">
+        <div class="projection-header">ESPN & Analytic Consensus Projections: 47 - 35 (6th Seed)</div>
+        <p style="color: var(--text-dark); font-size: 0.95rem;">
+          Based on ESPN analytics and league consensus data, the Warriors are projected to navigate a competitive Western Conference with an estimated final record of <strong>47 wins and 35 losses</strong>. Frontcourt additions, depth maintenance, and veteran health management around Stephen Curry, Jimmy Butler, and Kristaps Porziņģis serve as key swing factors for playoff seeding.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // 2026-2027 Golden State Warriors Roster Data
+    const rosterData = [
+      { id: 'curry', number: '30', name: 'Stephen Curry', pos: 'PG', ppg: 26.6, rpg: 3.6, apg: 4.7, bpg: 0.2, fg: '45.0%' },
+      { id: 'butler', number: '22', name: 'Jimmy Butler', pos: 'SF', ppg: 20.0, rpg: 5.6, apg: 4.9, bpg: 0.4, fg: '49.8%' },
+      { id: 'podziemski', number: '2', name: 'Brandin Podziemski', pos: 'SG', ppg: 19.6, rpg: 5.1, apg: 3.7, bpg: 0.2, fg: '44.5%' },
+      { id: 'porzingis', number: '6', name: 'Kristaps Porziņģis', pos: 'C', ppg: 16.1, rpg: 5.2, apg: 1.5, bpg: 1.2, fg: '47.2%' },
+      { id: 'green', number: '23', name: 'Draymond Green', pos: 'PF', ppg: 8.6, rpg: 7.2, apg: 6.0, bpg: 0.9, fg: '48.5%' },
+      { id: 'horford', number: '42', name: 'Al Horford', pos: 'C', ppg: 8.1, rpg: 5.1, apg: 2.6, bpg: 0.8, fg: '44.1%' },
+      { id: 'melton', number: '8', name: 'De\'Anthony Melton', pos: 'PG', ppg: 10.1, rpg: 3.4, apg: 2.8, bpg: 0.4, fg: '42.0%' },
+      { id: 'lendeborg', number: '11', name: 'Yaxel Lendeborg', pos: 'PF', ppg: 6.2, rpg: 4.1, apg: 1.0, bpg: 0.6, fg: '51.2%' }
+    ];
+
+    // Render Tabs & Profiles
+    const tabsNav = document.getElementById('tabsNav');
+    const tabContents = document.getElementById('tabContents');
+
+    rosterData.forEach((player, index) => {
+      // Build Tab Button
+      const btn = document.createElement('button');
+      btn.className = `tab-btn ${index === 0 ? 'active' : ''}`;
+      btn.textContent = player.name;
+      btn.onclick = () => selectTab(player.id);
+      tabsNav.appendChild(btn);
+
+      // Build Player Detail Card
+      const card = document.createElement('div');
+      card.id = `tab-${player.id}`;
+      card.className = `player-card ${index === 0 ? 'active' : ''}`;
+      card.innerHTML = `
+        <div class="player-avatar">#${player.number}</div>
+        <div class="player-info">
+          <h3>${player.name}</h3>
+          <div class="sub-details">Position: ${player.pos} | Golden State Warriors</div>
+          <div class="player-stats-grid">
+            <div>
+              <div class="p-stat-title">PTS</div>
+              <div class="p-stat-val">${player.ppg}</div>
+            </div>
+            <div>
+              <div class="p-stat-title">REB</div>
+              <div class="p-stat-val">${player.rpg}</div>
+            </div>
+            <div>
+              <div class="p-stat-title">AST</div>
+              <div class="p-stat-val">${player.apg}</div>
+            </div>
+            <div>
+              <div class="p-stat-title">BLK</div>
+              <div class="p-stat-val">${player.bpg}</div>
+            </div>
+            <div>
+              <div class="p-stat-title">FG%</div>
+              <div class="p-stat-val">${player.fg}</div>
+            </div>
+          </div>
+        </div>
+      `;
+      tabContents.appendChild(card);
+    });
+
+    function selectTab(playerId) {
+      // Remove active class from all buttons and cards
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent === rosterData.find(p => p.id === playerId).name);
+      });
+      document.querySelectorAll('.player-card').forEach(card => {
+        card.classList.toggle('active', card.id === `tab-${playerId}`);
+      });
+    }
+  </script>
+</body>
+</html>
